@@ -19,7 +19,7 @@ define(function (require) {
         },
 
         home: function() {
-          var tpl = require('hbs!../templates/home');
+          var tpl = require('hbs!../templates/allo');
           _this.$('.progress-bar').width('100%');
           setTimeout(function(){
             _this.$('#main-container').html(tpl());
@@ -30,30 +30,11 @@ define(function (require) {
           _this.Router.navigate('#/');
         }
 
-      }))(); //router
+      }))();
 
       // hitory backbone start
       this.Backbone.history.start();
     }
-      //
-      var UserList = Backbone.View.extend({
-        el:'.page',
-        render:function(){
-          this.$el.html('content');
-        }
-      });
-      
-      var userList= new UserList();
-
-      this.Router.on('route:home':function(){
-          userList.render();
-          }
-      );
-
-      });
-
-
-    }// end constructor
 
     // My Awesome App VERSION
     App.prototype.VERSION = '0.0.0';
