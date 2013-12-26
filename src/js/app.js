@@ -9,32 +9,45 @@ define(function (require) {
 
       // context ref
       var _this = this;
-
       // new backbone router
       this.Router = new (this.Backbone.Router.extend({
 
         routes: {
           '': 'home',
-          '*notFound': 'notFound'
+          '*notFound': 'notFound',
+          '*filter':'setFilter'
         },
 
         home: function() {
-          var tpl = require('hbs!../templates/allo');
+         /* var tpl = require('hbs!../templates/home');
           _this.$('.progress-bar').width('100%');
           setTimeout(function(){
             _this.$('#main-container').html(tpl());
-          },1000);
+           loadHome();
+          },1000);*/
         },
 
         notFound: function() {
           _this.Router.navigate('#/');
+        },
+        setFilter:function(param){
+          window.app.Todos.trigger('filter');
         }
 
       }))();
 
       // hitory backbone start
-      this.Backbone.history.start();
+      this.Backbone.history.start({pushState:true});
+    
     }
+
+    function loadHome(){
+      //var userList= new UserListView();
+      //userList.render();
+      //console.log(userList.el);
+
+    }
+   
 
     // My Awesome App VERSION
     App.prototype.VERSION = '0.0.0';
@@ -47,7 +60,22 @@ define(function (require) {
 
     // jQuery
     App.prototype.$ = require('jquery');
+    // jQuery
+    App.prototype.localStorage = require('backbone.localStorage');
 
+    require('models/todo');
+    require('collections/todos');
+    require('views/todos');
+    require('views/app');
+    new app.AppView();
+     // UserListView
+    //App.prototype.AppView = require('views/AppView');
+     // UserListView
+    //App.prototype.UserListView = require('views/UserListView');
+     // UserListView
+    //App.prototype.UserCollection = require('collections/UserCollection');
+     // UserListView
+    //App.prototype.User = require('models/User');
     // return App
     return App;
 

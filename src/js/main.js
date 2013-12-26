@@ -1,5 +1,5 @@
 require.config({
-  hbs:{
+  hbs: {
     disableHelpers: true,
     disableI18n: true,
     templateExtension: 'html'
@@ -23,44 +23,78 @@ require.config({
     hbs: '../components/require-handlebars-plugin/hbs',
     json2: '../components/require-handlebars-plugin/hbs/json2',
     i18nprecompile: '../components/require-handlebars-plugin/hbs/i18nprecompile',
-    handlebars: '../components/require-handlebars-plugin/Handlebars'
+    handlebars: '../components/require-handlebars-plugin/Handlebars',
+    bootstrap: '../components/bootstrap/dist/js/bootstrap',
+    'backbone.localStorage': '../components/backbone.localStorage/backbone.localStorage',
+    requirejs: '../components/requirejs/require'
   },
   shim: {
     bootstrapAffix: {
-      deps: ['jquery']
+      deps: [
+        'jquery'
+      ]
     },
     bootstrapAlert: {
-      deps: ['jquery', 'bootstrapTransition']
+      deps: [
+        'jquery',
+        'bootstrapTransition'
+      ]
     },
     bootstrapButton: {
-      deps: ['jquery']
+      deps: [
+        'jquery'
+      ]
     },
     bootstrapCarousel: {
-      deps: ['jquery', 'bootstrapTransition']
+      deps: [
+        'jquery',
+        'bootstrapTransition'
+      ]
     },
     bootstrapCollapse: {
-      deps: ['jquery', 'bootstrapTransition']
+      deps: [
+        'jquery',
+        'bootstrapTransition'
+      ]
     },
     bootstrapDropdown: {
-      deps: ['jquery']
+      deps: [
+        'jquery'
+      ]
     },
     bootstrapModal: {
-      deps: ['jquery', 'bootstrapTransition']
+      deps: [
+        'jquery',
+        'bootstrapTransition'
+      ]
     },
     bootstrapPopover: {
-      deps: ['jquery', 'bootstrapTooltip']
+      deps: [
+        'jquery',
+        'bootstrapTooltip'
+      ]
     },
     bootstrapScrollspy: {
-      deps: ['jquery']
+      deps: [
+        'jquery'
+      ]
     },
     bootstrapTab: {
-      deps: ['jquery', 'bootstrapTransition']
+      deps: [
+        'jquery',
+        'bootstrapTransition'
+      ]
     },
     bootstrapTooltip: {
-      deps: ['jquery', 'bootstrapTransition']
+      deps: [
+        'jquery',
+        'bootstrapTransition'
+      ]
     },
     bootstrapTransition: {
-      deps: ['jquery']
+      deps: [
+        'jquery'
+      ]
     }
   }
 });

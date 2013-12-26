@@ -22,13 +22,59 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div id="main-container">
-          Loading App...
-          <div class="progress progress-striped active">
-            <div class="progress-bar"  role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
-              <span class="sr-only">10% Complete</span>
-            </div>
-          </div>
+            <div id="main-container" class='container'>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
+
+                    </div>
+                    <div id="todoapp" class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <header>
+                          <h1>Todos</h1>
+                          <input id="new-todo" type="text" placeholder="What needs to be done?">
+                        </header>
+
+                        <section id="main">
+                          <input id="toggle-all" type="checkbox">
+                          <label for="toggle-all">Mark all as complete</label>
+                          <ul id="todo-list"></ul>
+                        </section>
+
+                        <footer>
+                          <a id="clear-completed">Clear completed</a>
+                          <div id="todo-count"></div>
+                        </footer>
+                        <div id="instructions">
+                            Double-click to edit a todo.
+                        </div>
+
+                    </div>
+
+                   
+                </div>
+            
+            <script type="text/template" id="item-template">
+                <div class="view">
+                <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>> <label><%- title %></label>
+                <button class="destroy"></button>
+                </div>
+                <input class="edit" value="<%- title %>">
+            </script>
+
+            <script type="text/template" id="stats-template">
+                <span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span> <ul id="filters">
+                <li>
+                <a class="selected" href="#/">All</a>
+                </li> <li>
+                            <a href="#/active">Active</a>
+                          </li>
+                          <li>
+                            <a href="#/completed">Completed</a>
+                </li> </ul>
+                <% if (completed) { %>
+                    <button id="clear-completed">Clear completed (<%= completed %>)</button>
+                 <% } %>
+            </script>
+
         </div>
 
         <!-- build:js js/vendor.js -->
