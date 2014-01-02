@@ -24,13 +24,15 @@
 
             <div id="main-container" class='container'>
                 <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
-
+                    <div>
+                        <h3>Estadisticas</h3>
                     </div>
-                    <div id="todoapp" class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                </div>
+                <div class="row">
+                    <div id="todoapp" >
                         <header>
-                          <h1>Todos</h1>
-                          <input id="new-todo" type="text" placeholder="What needs to be done?">
+                          <h3>List of To Do´s </h3>
+                          <input id="new-todo" type="text" placeholder="What's next?">
                         </header>
 
                         <section id="main">
@@ -51,7 +53,8 @@
 
                    
                 </div>
-            
+                
+                
             <script type="text/template" id="item-template">
                 <div class="view">
                 <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>> <label><%- title %></label>

@@ -2,13 +2,12 @@ var app = app || {}; // The Application
 var ENTER_KEY = 13;
 // ---------------
 // Our overall **AppView** is the top-level piece of UI.
-app.AppView = Backbone.View.extend({
+app.TodoListAppView = Backbone.View.extend({
 	// Instead of generating a new element, bind to the existing skeleton of 
 	// the app already present in the HTML.
 	el: '#todoapp',
-	 // Our template for the line of statistics at the bottom of the app.
-		statsTemplate: _.template( $('#stats-template').html() ),
-	// New
+	// Our template for the line of statistics at the bottom of the app.
+	statsTemplate: _.template( $('#stats-template').html() ),
 	// Delegated events for creating new items, and clearing completed ones. 
 	events: {
 						'keypress #new-todo': 'createOnEnter',
@@ -34,7 +33,7 @@ app.AppView = Backbone.View.extend({
 	// of the app doesn't change.
 	render: function() {
 		var completed = app.Todos.completed().length;
-		 var remaining = app.Todos.remaining().length;
+		var remaining = app.Todos.remaining().length;
 		if ( app.Todos.length ) {
 			this.$main.show(); 
 			this.$footer.show();
@@ -84,6 +83,7 @@ app.AppView = Backbone.View.extend({
 	},
 	// Clear all completed todo items, destroying their models. 
 	clearCompleted: function() {
+		console.log(app.Todos.completed());
 		_.invoke(app.Todos.completed(), 'destroy');
 		return false; 
 	},

@@ -30,6 +30,7 @@ define(function (require) {
         notFound: function() {
           _this.Router.navigate('#/');
         },
+        
         setFilter:function(param){
           window.app.Todos.trigger('filter');
         }
@@ -63,11 +64,12 @@ define(function (require) {
     // jQuery
     App.prototype.localStorage = require('backbone.localStorage');
 
-    require('models/todo');
-    require('collections/todos');
-    require('views/todos');
-    require('views/app');
-    new app.AppView();
+    require('models/toDoItem');
+    require('collections/toDoList');
+    require('views/toDoListView');
+    require('views/toDoAppView');
+
+    var masterToDoList = new app.TodoListAppView();
      // UserListView
     //App.prototype.AppView = require('views/AppView');
      // UserListView

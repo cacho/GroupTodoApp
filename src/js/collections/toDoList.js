@@ -5,13 +5,13 @@ var app = app || {}; // Todo Collection
     // server.
     var TodoList = Backbone.Collection.extend({
         // Reference to this collection's model.
-        model: app.Todo,
+        model: app.TodoItem,
         // Save all of the todo items under the `"todos-backbone"` namespace.
         // Note that you will need to have the Backbone localStorage plug-in
         // loaded inside your page in order for this to work. If testing
         // in the console without this present, comment out the next line
         // to avoid running into an exception.
-        localStorage: new Backbone.LocalStorage('todos-backbone'),
+        localStorage: new Backbone.LocalStorage('todoItems-backbone'),
         // Filter down the list of all todo items that are finished.
         completed: function() {
             return this.filter(function( todo ) {
