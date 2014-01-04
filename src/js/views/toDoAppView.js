@@ -22,8 +22,6 @@ var TodoListAppView = Backbone.View.extend({
 			this.listenTo(app.Todos, 'all', this.render);
 			app.Todos.fetch();
 	},
-	// Rerendering the app just means refreshing the statistics -- the rest 
-	// of the app doesn't change.
 	render: function(){
 		var completed = app.Todos.completed().length;
 		var remaining = app.Todos.remaining().length;
@@ -40,13 +38,10 @@ var TodoListAppView = Backbone.View.extend({
 		}
 		this.allCheckbox.checked = !remaining;
 	},
-	// Add a single todo item to the list by creating a view for it, and 
-	// appending its element to the `<ul>`.
 	addOne: function( todo ) {
 		var view = new app.TodoView({ model: todo });
 		$('#todo-list').append( view.render().el );
 	},
-	// Add all items in the **Todos** collection at once.
 	addAll: function() { 
 		this.$('#todo-list').html('');
 		app.Todos.each(this.addOne, this);
@@ -57,14 +52,13 @@ var TodoListAppView = Backbone.View.extend({
 	filterAll : function () { 
 		app.Todos.each(this.filterOne, this);
 	},
-	// Generate the attributes for a new todo item. 
 	newAttributes: function() {
 		return {
-			title: this.$input.val().trim(), order: app.Todos.nextOrder(), completed: false
+			title: this.$input.val().trim(),
+			order: app.Todos.nextOrder(),
+			completed: false
 		}; 
 	},
-	// If you hit return in the main input field, create new Todo model, 
-	// persisting it to localStorage.
 	createOnEnter: function( event ) {
 		if ( event.which !== ENTER_KEY || !this.$input.val().trim() ) { 
 			return;
@@ -72,7 +66,6 @@ var TodoListAppView = Backbone.View.extend({
 		app.Todos.create( this.newAttributes() );
 		this.$input.val('');
 	},
-	// Clear all completed todo items, destroying their models. 
 	clearCompleted: function() {
 		_.invoke(app.Todos.completed(), 'destroy');
 		return false; 

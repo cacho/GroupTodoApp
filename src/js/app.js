@@ -32,7 +32,7 @@ define(function (require) {
           _this.Router.navigate('#/');
         },
         
-        setFilter:function(param){
+        setFilter:function(params){
           window.app.Todos.trigger('filter');
         }
 
@@ -44,7 +44,6 @@ define(function (require) {
       app.Todos = new TodoList();
       new TodoListAppView();
       app.TodoRouter = this.Router;
-      //this.Todos= new TodoList({model: app.TodoItem});
     
     }
 
@@ -57,7 +56,7 @@ define(function (require) {
    
 
     // My Awesome App VERSION
-    App.prototype.VERSION = '0.0.0';
+    App.prototype.VERSION = '0.0.1';
 
     // Backbone
     App.prototype.Backbone = require('backbone');
@@ -67,7 +66,8 @@ define(function (require) {
 
     // jQuery
     App.prototype.$ = require('jquery');
-    // jQuery
+
+    // localStorage
     App.prototype.localStorage = require('backbone.localStorage');
     
     require('models/toDoItem');
@@ -75,18 +75,6 @@ define(function (require) {
     require('views/toDoListView');
     require('views/toDoAppView');
     
-   
-
-    
-     // UserListView
-    //App.prototype.AppView = require('views/AppView');
-     // UserListView
-    //App.prototype.UserListView = require('views/UserListView');
-     // UserListView
-    //App.prototype.UserCollection = require('collections/UserCollection');
-     // UserListView
-    //App.prototype.User = require('models/User');
-    // return App
     return App;
 
   })();
