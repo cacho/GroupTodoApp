@@ -1,0 +1,13 @@
+.stats-graph{
+	min-height: 300px;
+}
+.todo-list-container li.editing .edit {
+	display: block;
+}
+
+.todo-list-container li.editing .view {
+	display: none;
+}
+.todo-list-container li .edit {
+	display: none;
+}

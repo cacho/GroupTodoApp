@@ -9,6 +9,7 @@ define(function (require) {
 
       // context ref
       var _this = this;
+
       // new backbone router
       this.Router = new (this.Backbone.Router.extend({
 
@@ -37,8 +38,13 @@ define(function (require) {
 
       }))();
 
-      // hitory backbone start
-      this.Backbone.history.start({pushState:true});
+      // history backbone start
+      this.Backbone.history.start();
+      //start our ToDoApp
+      app.Todos = new TodoList();
+      new TodoListAppView();
+      app.TodoRouter = this.Router;
+      //this.Todos= new TodoList({model: app.TodoItem});
     
     }
 
@@ -63,13 +69,15 @@ define(function (require) {
     App.prototype.$ = require('jquery');
     // jQuery
     App.prototype.localStorage = require('backbone.localStorage');
-
+    
     require('models/toDoItem');
     require('collections/toDoList');
     require('views/toDoListView');
     require('views/toDoAppView');
+    
+   
 
-    var masterToDoList = new app.TodoListAppView();
+    
      // UserListView
     //App.prototype.AppView = require('views/AppView');
      // UserListView

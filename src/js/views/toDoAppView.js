@@ -1,22 +1,15 @@
-var app = app || {}; // The Application
+var app = app || {};
 var ENTER_KEY = 13;
-// ---------------
-// Our overall **AppView** is the top-level piece of UI.
-app.TodoListAppView = Backbone.View.extend({
-	// Instead of generating a new element, bind to the existing skeleton of 
-	// the app already present in the HTML.
+
+var TodoListAppView = Backbone.View.extend({
+	
 	el: '#todoapp',
-	// Our template for the line of statistics at the bottom of the app.
 	statsTemplate: _.template( $('#stats-template').html() ),
-	// Delegated events for creating new items, and clearing completed ones. 
 	events: {
-						'keypress #new-todo': 'createOnEnter',
-						'click #clear-completed': 'clearCompleted',
-						'click #toggle-all': 'toggleAllComplete'
+		'keypress #new-todo': 'createOnEnter',
+		'click #clear-completed': 'clearCompleted',
+		'click #toggle-all': 'toggleAllComplete'
 	},
-	// At initialization we bind to the relevant events on the `Todos`
-	// collection, when items are added or changed. Kick things off by
-	// loading any preexisting todos that might be saved in *localStorage*.
 	initialize: function() {
 			this.allCheckbox = this.$('#toggle-all')[0];
 			this.$input = this.$('#new-todo');
@@ -31,19 +24,17 @@ app.TodoListAppView = Backbone.View.extend({
 	},
 	// Rerendering the app just means refreshing the statistics -- the rest 
 	// of the app doesn't change.
-	render: function() {
+	render: function(){
 		var completed = app.Todos.completed().length;
 		var remaining = app.Todos.remaining().length;
-		if ( app.Todos.length ) {
-			this.$main.show(); 
+		if( app.Todos.length ){
+			this.$main.show();
 			this.$footer.show();
-			this.$footer.html(this.statsTemplate({ completed: completed,
-			remaining: remaining
-			}));
+			this.$footer.html(this.statsTemplate({completed: completed, remaining: remaining }));
 			this.$('#filters li a')
-			.removeClass('selected')
-			.filter('[href="#/' + ( app.TodoFilter || '' ) + '"]').addClass('selected');
-		} else { 
+				.removeClass('selected')
+				.filter('[href="#/' + ( app.TodoFilter || '' ) + '"]').addClass('selected');
+		}else{ 
 			this.$main.hide();
 			this.$footer.hide();
 		}
@@ -83,7 +74,6 @@ app.TodoListAppView = Backbone.View.extend({
 	},
 	// Clear all completed todo items, destroying their models. 
 	clearCompleted: function() {
-		console.log(app.Todos.completed());
 		_.invoke(app.Todos.completed(), 'destroy');
 		return false; 
 	},

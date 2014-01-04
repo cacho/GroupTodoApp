@@ -12,6 +12,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) css/main.css -->
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/todoAppMain.css">
         <!-- endbuild -->
         <!-- build:js js/vendor/modernizr.js -->
         <script src="components/modernizr/modernizr.js"></script>
@@ -23,13 +24,19 @@
         <![endif]-->
 
             <div id="main-container" class='container'>
+                <div class="page-header">
+                    <h1>Group-Todo <small>Simple Task Managment for Groups</small></h1>
+                </div>
                 <div class="row">
-                    <div>
-                        <h3>Estadisticas</h3>
+                    <div >
+                        <h1>Statistics</h1>
+                        <div id="graph-container" class="stats-graph">
+                            <div id="graph"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div id="todoapp" >
+                    <div id="todoapp">
                         <header>
                           <h3>List of To Do´s </h3>
                           <input id="new-todo" type="text" placeholder="What's next?">
@@ -37,15 +44,15 @@
 
                         <section id="main">
                           <input id="toggle-all" type="checkbox">
-                          <label for="toggle-all">Mark all as complete</label>
-                          <ul id="todo-list"></ul>
+                          <label for="toggle-all" class="label label-info">Mark all as complete</label>
+                          <ul id="todo-list" class="todo-list-container"></ul>
                         </section>
 
-                        <footer>
+                        <footer id="footer">
                           <a id="clear-completed">Clear completed</a>
                           <div id="todo-count"></div>
                         </footer>
-                        <div id="instructions">
+                        <div id="instructions" class="label label-info">
                             Double-click to edit a todo.
                         </div>
 
@@ -64,7 +71,7 @@
             </script>
 
             <script type="text/template" id="stats-template">
-                <span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span> <ul id="filters">
+                <span id="todo-count" class="badge"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span> <ul id="filters">
                 <li>
                 <a class="selected" href="#/">All</a>
                 </li> <li>
@@ -93,7 +100,7 @@
             e=o.createElement(i);r=o.getElementsByTagName(i)[0];
             e.src='//www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
+            ga('create','UA-10916879-1');ga('send','pageview');
         </script>
 
         <!-- build:js js/main.js -->
