@@ -1,7 +1,7 @@
 /*global define */
 define(function (require) {
   'use strict';
-
+  //['require','models/toDoItem','collections/toDoList','views/toDoListView','views/toDoAppView']
   var App = (function() {
 
     // constructor
@@ -9,7 +9,8 @@ define(function (require) {
 
       // context ref
       var _this = this;
-
+      // toDoList App view
+      this.todoAppView=require('views/toDoAppView');
       // new backbone router
       this.Router = new (this.Backbone.Router.extend({
 
@@ -41,9 +42,9 @@ define(function (require) {
       // history backbone start
       this.Backbone.history.start();
       //start our ToDoApp
-      app.Todos = new TodoList();
-      new TodoListAppView();
-      app.TodoRouter = this.Router;
+     // app.Todos = new TodoList();
+      //var tdl= new TodoListAppView();
+      //app.TodoRouter = this.Router;
     
     }
 
@@ -68,12 +69,13 @@ define(function (require) {
     App.prototype.$ = require('jquery');
 
     // localStorage
-    App.prototype.localStorage = require('backbone.localStorage');
-    
+    //App.prototype.localStorage = require('localStorage');
+   /* 
     require('models/toDoItem');
     require('collections/toDoList');
-    require('views/toDoListView');
-    require('views/toDoAppView');
+    require('views/toDoListView');*/
+
+    
     
     return App;
 
