@@ -32,7 +32,7 @@ define(function (require) {
           _this.Router.navigate('#/');
         },
         
-        setFilter:function(params){
+        setFilter:function(){
           this.todoAppView.mainTodoList.trigger('filter');
         }
 

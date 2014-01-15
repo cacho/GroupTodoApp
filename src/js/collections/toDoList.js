@@ -1,3 +1,4 @@
+/*global define */
 define(['backbone','localStorage','models/toDoItem'],
   function (Backbone,ls,myModel) {
     'use strict';

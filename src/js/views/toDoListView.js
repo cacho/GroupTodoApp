@@ -1,3 +1,4 @@
+/*global define */
 define(['require','backbone','jquery','underscore'],
   function (require,Backbone,$,_) {
     'use strict';
