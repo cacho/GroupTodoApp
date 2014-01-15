@@ -1,6 +1,6 @@
 define(['require','backbone','jquery','underscore'],
   function (require,Backbone,$,_) {
-
+    'use strict';
     var ENTER_KEY = 13;
     var TodoView = Backbone.View.extend({
       tagName: 'li',
@@ -31,37 +31,37 @@ define(['require','backbone','jquery','underscore'],
         this.$el.toggleClass( 'hidden', this.isHidden());
       },
       isHidden : function () {
-        var isCompleted = this.model.get('completed'); 
+        var isCompleted = this.model.get('completed');
         return(
             (!isCompleted && this.TodoFilter === 'completed') || (isCompleted && this.TodoFilter === 'active')
           );
       },
-      togglecompleted: function() { 
+      togglecompleted: function() {
         this.model.toggle();
       },
-      edit: function() { 
+      edit: function() {
         this.$el.addClass('editing');
         this.$input.focus();
       },
       close: function() {
         var value = this.$input.val().trim();
         if ( value ) {
-            this.model.save({ title: value });
+          this.model.save({ title: value });
         } else {
-            this.clear();
+          this.clear();
         }
-        this.$el.removeClass('editing'); 
+        this.$el.removeClass('editing');
       },
-      updateOnEnter: function( e ) { 
+      updateOnEnter: function( e ) {
         if( e.which === ENTER_KEY ) {
-            this.close();
+          this.close();
         }
       },
       clear: function() {
-          this.model.destroy(); 
+        this.model.destroy();
       }
+    });
+
+    return TodoView;
+
   });
-
-  return TodoView;
-
-});

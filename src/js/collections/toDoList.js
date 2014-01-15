@@ -25,4 +25,4 @@ define(['backbone','localStorage','models/toDoItem'],
       });
     
     return TodoList;
-});
+  });

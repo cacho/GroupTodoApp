@@ -41,9 +41,10 @@ define(['require',
           this.$('#filters li a')
               .removeClass('selected')
               .filter('[href="#/' + ( this.TodoFilter || '' ) + '"]').addClass('selected');
-        }else{ 
-            this.$main.hide();
-            this.$footer.hide();
+
+        }else{
+          this.$main.hide();
+          this.$footer.hide();
         }
         this.allCheckbox.checked = !remaining;
       },
@@ -51,26 +52,26 @@ define(['require',
         var view = new TodoView({ model: todo });
         $('#todo-list').append( view.render().el );
       },
-      addAll: function() { 
+      addAll: function() {
         this.$('#todo-list').html('');
         this.mainTodoList.each(this.addOne, this);
       },
-      filterOne : function (todo) { 
+      filterOne : function (todo) {
         todo.trigger('visible');
       },
-      filterAll : function () { 
-          this.mainTodoList.each(this.filterOne, this);
+      filterAll : function () {
+        this.mainTodoList.each(this.filterOne, this);
       },
       newAttributes: function() {
         return {
-            title: this.$input.val().trim(),
-            order: this.mainTodoList.nextOrder(),
-            completed: false
+          title: this.$input.val().trim(),
+          order: this.mainTodoList.nextOrder(),
+          completed: false
         };
       },
       createOnEnter: function( event ) {
         if ( event.which !== ENTER_KEY || !this.$input.val().trim() ) {
-            return;
+          return;
         }
         this.mainTodoList.create( this.newAttributes() );
         this.$input.val('');
@@ -85,9 +86,7 @@ define(['require',
           todo.save({'completed': completed });
         });
       }
-  });
-
+    });
  
-  return new TodoListAppView();
-
-});
+    return new TodoListAppView();
+  });
