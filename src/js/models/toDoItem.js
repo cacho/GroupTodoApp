@@ -1,14 +1,15 @@
 define(['backbone'],function(Backbone){
   'use strict';
+
   var TodoItem = Backbone.Model.extend({
     defaults: {
-        title: '',
-        completed: false
+      title: '',
+      completed: false
     },
     toggle: function() {
-        this.save({ completed: !this.get('completed') });
+      this.save({ completed: !this.get('completed') });
     }
   });
 
-  return new TodoItem();
-})
+  return TodoItem;
+});

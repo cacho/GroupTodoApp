@@ -56,7 +56,7 @@ define(function (require) {
     }
    
 
-    // My Awesome App VERSION
+    // App VERSION
     App.prototype.VERSION = '0.0.1';
 
     // Backbone
@@ -68,15 +68,6 @@ define(function (require) {
     // jQuery
     App.prototype.$ = require('jquery');
 
-    // localStorage
-    //App.prototype.localStorage = require('localStorage');
-   /* 
-    require('models/toDoItem');
-    require('collections/toDoList');
-    require('views/toDoListView');*/
-
-    
-    
     return App;
 
   })();

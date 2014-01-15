@@ -1,10 +1,6 @@
 define(['backbone','localStorage','models/toDoItem'],
   function (Backbone,ls,myModel) {
     'use strict';
-    //var _this = this;
-    //var myModel = require(['models/toDoItem']);
-
-   
     
     var TodoList = Backbone.Collection.extend({
         model: myModel,
@@ -28,6 +24,5 @@ define(['backbone','localStorage','models/toDoItem'],
         }
       });
     
-    return new TodoList();
- 
-  });
+    return TodoList;
+});

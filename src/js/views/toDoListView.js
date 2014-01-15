@@ -1,6 +1,7 @@
 define(['require','backbone','jquery','underscore'],
   function (require,Backbone,$,_) {
 
+    var ENTER_KEY = 13;
     var TodoView = Backbone.View.extend({
       tagName: 'li',
       template: _.template( $('#item-template').html() ),
@@ -12,9 +13,11 @@ define(['require','backbone','jquery','underscore'],
         'blur .edit': 'close'
       },
       initialize: function() {
+        console.log(this);
         this.listenTo(this.model, 'change', this.render);
         this.listenTo(this.model, 'destroy', this.remove);
         this.listenTo(this.model, 'visible', this.toggleVisible);
+
       },
       render: function() {
         this.$el.addClass('list-group-item');
@@ -30,7 +33,7 @@ define(['require','backbone','jquery','underscore'],
       isHidden : function () {
         var isCompleted = this.model.get('completed'); 
         return(
-            (!isCompleted && app.TodoFilter === 'completed') || (isCompleted && app.TodoFilter === 'active')
+            (!isCompleted && this.TodoFilter === 'completed') || (isCompleted && this.TodoFilter === 'active')
           );
       },
       togglecompleted: function() { 
@@ -59,6 +62,6 @@ define(['require','backbone','jquery','underscore'],
       }
   });
 
-  return new TodoView();
+  return TodoView;
 
 });

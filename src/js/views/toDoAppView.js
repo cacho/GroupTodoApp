@@ -1,9 +1,13 @@
-define(['require','backbone','jquery','underscore','collections/toDoList','views/toDoListView'],
+define(['require',
+        'backbone',
+        'jquery',
+        'underscore',
+        'collections/toDoList',
+        'views/toDoListView'],
   function (require,Backbone,$,_,Todos,TodoView){
     'use strict';
     var ENTER_KEY = 13;
-    var _this=this;
-    console.log(TodoView);
+
     var TodoListAppView = Backbone.View.extend({
       el: '#todoapp',
       statsTemplate: _.template( $('#stats-template').html() ),
@@ -17,24 +21,26 @@ define(['require','backbone','jquery','underscore','collections/toDoList','views
         this.$input = this.$('#new-todo');
         this.$footer = this.$('#footer');
         this.$main = this.$('#main');
-        //console.log(Todos);
-        this.listenTo(Todos, 'add', this.addOne);
-        this.listenTo(Todos, 'reset', this.addAll);
-        this.listenTo(Todos, 'change:completed', this.filterOne);
-        this.listenTo(Todos,'filter', this.filterAll);
-        this.listenTo(Todos, 'all', this.render);
-        Todos.fetch();
+        this.mainTodoList = new Todos();
+
+        this.listenTo(this.mainTodoList, 'add', this.addOne);
+        this.listenTo(this.mainTodoList, 'reset', this.addAll);
+        this.listenTo(this.mainTodoList, 'change:completed', this.filterOne);
+        this.listenTo(this.mainTodoList,'filter', this.filterAll);
+        this.listenTo(this.mainTodoList, 'all', this.render);
+        this.mainTodoList.fetch();
       },
       render: function(){
-        var completed = _this.Todos.completed().length;
-        var remaining = _this.Todos.remaining().length;
-        if( _this.Todos.length ){
+        console.log(this);
+        var completed = this.mainTodoList.completed().length;
+        var remaining = this.mainTodoList.remaining().length;
+        if( this.mainTodoList.length ){
           this.$main.show();
           this.$footer.show();
           this.$footer.html(this.statsTemplate({completed: completed, remaining: remaining }));
           this.$('#filters li a')
               .removeClass('selected')
-              .filter('[href="#/' + ( app.TodoFilter || '' ) + '"]').addClass('selected');
+              .filter('[href="#/' + ( this.TodoFilter || '' ) + '"]').addClass('selected');
         }else{ 
             this.$main.hide();
             this.$footer.hide();
@@ -47,18 +53,18 @@ define(['require','backbone','jquery','underscore','collections/toDoList','views
       },
       addAll: function() { 
         this.$('#todo-list').html('');
-        Todos.each(this.addOne, this);
+        this.mainTodoList.each(this.addOne, this);
       },
       filterOne : function (todo) { 
         todo.trigger('visible');
       },
       filterAll : function () { 
-          Todos.each(this.filterOne, this);
+          this.mainTodoList.each(this.filterOne, this);
       },
       newAttributes: function() {
         return {
             title: this.$input.val().trim(),
-            order: Todos.nextOrder(),
+            order: this.mainTodoList.nextOrder(),
             completed: false
         };
       },
@@ -66,16 +72,16 @@ define(['require','backbone','jquery','underscore','collections/toDoList','views
         if ( event.which !== ENTER_KEY || !this.$input.val().trim() ) {
             return;
         }
-        Todos.create( this.newAttributes() );
+        this.mainTodoList.create( this.newAttributes() );
         this.$input.val('');
       },
       clearCompleted: function() {
-        _.invoke(app.Todos.completed(), 'destroy');
+        _.invoke(this.mainTodoList.completed(), 'destroy');
         return false;
       },
       toggleAllComplete: function() {
         var completed = this.allCheckbox.checked;
-        Todos.each(function( todo ) {
+        this.mainTodoList.each(function( todo ) {
           todo.save({'completed': completed });
         });
       }
