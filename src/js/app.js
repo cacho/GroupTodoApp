@@ -1,7 +1,6 @@
 /*global define */
 define(function (require) {
   'use strict';
-
   var App = (function() {
 
     // constructor
@@ -9,7 +8,8 @@ define(function (require) {
 
       // context ref
       var _this = this;
-
+      // toDoList App view
+      this.todoAppView=require('views/toDoAppView');
       // new backbone router
       this.Router = new (this.Backbone.Router.extend({
 
@@ -33,29 +33,17 @@ define(function (require) {
         },
         
         setFilter:function(params){
-          window.app.Todos.trigger('filter');
+          this.todoAppView.mainTodoList.trigger('filter');
         }
 
       }))();
 
       // history backbone start
       this.Backbone.history.start();
-      //start our ToDoApp
-      app.Todos = new TodoList();
-      new TodoListAppView();
-      app.TodoRouter = this.Router;
     
     }
 
-    function loadHome(){
-      //var userList= new UserListView();
-      //userList.render();
-      //console.log(userList.el);
-
-    }
-   
-
-    // My Awesome App VERSION
+    // App VERSION
     App.prototype.VERSION = '0.0.1';
 
     // Backbone
@@ -67,14 +55,6 @@ define(function (require) {
     // jQuery
     App.prototype.$ = require('jquery');
 
-    // localStorage
-    App.prototype.localStorage = require('backbone.localStorage');
-    
-    require('models/toDoItem');
-    require('collections/toDoList');
-    require('views/toDoListView');
-    require('views/toDoAppView');
-    
     return App;
 
   })();

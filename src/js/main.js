@@ -25,7 +25,7 @@ require.config({
     i18nprecompile: '../components/require-handlebars-plugin/hbs/i18nprecompile',
     handlebars: '../components/require-handlebars-plugin/Handlebars',
     bootstrap: '../components/bootstrap/dist/js/bootstrap',
-    'backbone.localStorage': '../components/backbone.localStorage/backbone.localStorage',
+    localStorage: '../components/backbone.localStorage/backbone.localStorage',
     requirejs: '../components/requirejs/require'
   },
   shim: {
