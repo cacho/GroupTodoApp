@@ -3,6 +3,7 @@ Group Todo v0.0.1
 # Group Todo
 
 Basic to-do application for small collaboration groups.
+<a href="http://www.neuronapixel.com/group-todo/"> Test page on Neuronapixel Site</a>
 
 ##Early dev stage.
 works with Backbone.localstorage for the moment; so only on-browser-session memory.
