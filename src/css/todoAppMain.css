@@ -1,5 +1,16 @@
+body { padding-top: 0; }
+.todo-app-container{
+	height: 600px;
+}
+.todo-app-container section{
+	margin-bottom: 5px;
+}
 .stats-graph{
 	min-height: 300px;
+}
+.todo-list-container{
+	height: 300px;
+	overflow: auto;
 }
 .todo-list-container li.editing .edit {
 	display: block;

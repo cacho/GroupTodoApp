@@ -20,11 +20,12 @@ define(function (require) {
         },
 
         home: function() {
-         /* var tpl = require('hbs!../templates/home');
+         /*var tpl = require('hbs!../templates/home');
           _this.$('.progress-bar').width('100%');
           setTimeout(function(){
-            _this.$('#main-container').html(tpl());
-           loadHome();
+            console.log(tpl);
+            //_this.$('#main-container').html(tpl());
+            
           },1000);*/
         },
 
