@@ -22,6 +22,7 @@ define(['require','backbone','jquery','underscore'],
       },
       render: function() {
         this.$el.addClass('list-group-item');
+        this.$el.addClass('list-todo-item');
         this.$el.html( this.template( this.model.toJSON() ) );
         this.$el.toggleClass( 'completed', this.model.get('completed') );
         this.toggleVisible();

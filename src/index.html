@@ -47,7 +47,9 @@
                                     </label>
                                 </div>
                                 
-                                <ul id="todo-list" class="todo-list-container list-group"></ul>
+                                <div class="todo-list-container">
+                                    <ul id="todo-list" class="list-group"></ul>
+                                </div>
                                 <div id="instructions" >
                                     <span class="label label-info">Double-click to edit a todo</span>
                                 </div>
@@ -96,7 +98,7 @@
                     <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
                     <label><%- title %></label>
                     <span class="pull-right">
-                        <button type="button" class="destroy btn btn-default btn-sm">
+                        <button type="button" class="destroy btn btn-default btn-sm btn-destroy">
                             <span class="glyphicon glyphicon-minus-sign"></span>
                         </button>
                     </span>
@@ -105,11 +107,11 @@
             </script>
 
             <script type="text/template" id="stats-template">
-                
+                <div class="text-right">
                      <span id="todo-count"><strong class="badge"><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span>
-                
-               
-                <ul id="filters" class="pagination">
+                </div>
+                <div class="text-center">
+                <ul id="filters" class="pagination pagination-sm">
                     <li >
                         <a class="selected" href="#/">All</a>
                     </li> 
@@ -120,8 +122,11 @@
                         <a href="#/completed">Completed</a>
                     </li>
                 </ul>
+                </div>
                 <% if (completed) { %>
-                    <button id="clear-completed" type="button" class="btn btn-warning">Clear completed (<%= completed %>)</button>
+                <div class="text-right">
+                    <button id="clear-completed" type="button" class="btn btn-sm btn-warning">Clear completed (<%= completed %>)</button>
+                    </div>
                  <% } %>
             </script>
 
