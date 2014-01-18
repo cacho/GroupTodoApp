@@ -24,7 +24,7 @@
         <![endif]-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -32,11 +32,11 @@
                     </button>
                     <a class="navbar-brand" href="#">Group-Todo </a>   
                 </div>
-                                  </nav>
+            </nav>
             <div id="main-container" class='container'>
                 
                  <div class="row">
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="col-sm-3 col-md-3 col-lg-3">
                         <div id="todoapp" class="todo-app-container">
                             <input id="new-todo" type="text"  class="form-control" placeholder="What to do next?">
 
@@ -60,24 +60,20 @@
                               <a id="clear-completed">Clear completed</a>
                               <div id="todo-count"></div>
                             </footer>
-                            
-                            
-
                         </div>
                     </div>
                     
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                        <div id="users-panel">
-                                 <span class="label label-success">Users Panel</span>
+                    <div class="col-sm-9 col-md-9 col-lg-9">
+                        <div id="users-panel" class="user-panel-container">
+                            <span class="label label-success">Users Panel</span>
                        
-                                <div id="user-list"></div>
+                        <div id="user-list"></div>
                             
-                        </div>
                     </div>
-                   
-                </div>
-                <div class="row hidden-md visible-lg">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+
+                    </div>
+                       
+                    <div class="col-sm-9 col-md-9 hidden-xs">
                         <div id="stadistict-panel" class="panel panel-default">
                             <div class="panel-heading">
                                  <h3 class="panel-title">Statistics</h3>
@@ -89,7 +85,9 @@
                             </div>   
                         </div>
                     </div>
+                    
                 </div>
+                
                
                 
                 

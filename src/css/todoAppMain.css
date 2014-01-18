@@ -8,13 +8,18 @@ body { padding-top: 0; }
 	margin-bottom: 5px;
 }
 .stats-graph{
-	min-height: 300px;
+	min-height: 430px;
 }
 .todo-list-container{
 	height: 435px;
 	overflow: auto;
 	padding: 5px;
 	border:1px solid #DDD;
+}
+.user-panel-container{
+	background-color: #F4F4F4;
+	min-height: 150px;
+	margin-bottom: 10px;
 }
 .btn-destroy{
 	border:none;

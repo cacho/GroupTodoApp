@@ -14,7 +14,6 @@ define(['require','backbone','jquery','underscore'],
         'blur .edit': 'close'
       },
       initialize: function() {
-        console.log(this);
         this.listenTo(this.model, 'change', this.render);
         this.listenTo(this.model, 'destroy', this.remove);
         this.listenTo(this.model, 'visible', this.toggleVisible);
@@ -30,6 +29,7 @@ define(['require','backbone','jquery','underscore'],
         return this;
       },
       toggleVisible : function () {
+        console.log("toggleVisible");
         this.$el.toggleClass( 'hidden', this.isHidden());
       },
       isHidden : function () {

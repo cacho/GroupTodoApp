@@ -32,7 +32,6 @@ define(['require',
         this.mainTodoList.fetch();
       },
       render: function(){
-        console.log(this);
         var completed = this.mainTodoList.completed().length;
         var remaining = this.mainTodoList.remaining().length;
         if( this.mainTodoList.length ){
